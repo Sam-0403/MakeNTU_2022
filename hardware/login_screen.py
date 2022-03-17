@@ -4,7 +4,6 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty, ObjectProperty
-from sqlalchemy import null
 from send_data import send_data
 
 login_url = 'http://127.0.0.1:8000/userLogin'
