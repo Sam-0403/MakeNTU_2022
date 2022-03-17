@@ -1,0 +1,56 @@
+#:kivy 2.1.0
+<UserScreen>:
+    typeDropDown: typeDropDown
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            id: 'LeftLayout'
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'vertical'
+                padding: [50, 50, 50, 50]
+                Label:
+                    id: 'User{}'.format(root.userName)
+                    text: 'User: {}'.format(root.userName)
+                    font_size: sp(40)
+                Label:
+                    id: 'Point{}'.format(root.userName)
+                    text: 'Your Points: {}'.format(root.userPoint)
+                    font_size: sp(40)
+                Label:
+                    id: 'Type{}'.format(root.userName)
+                    text: 'Type: Garbage'
+                    font_size: sp(40)
+            RelativeLayout:
+                Image:
+                    source: "../img/garbage-bag.png"
+                    pos_hint: {'x': 0, 'y': 0.1}
+                Label:
+                    text: 'Bonus: 1 point'
+                    font_size: sp(40)
+                    pos_hint: {'x': 0, 'y': -0.35}
+        BoxLayout:
+            id: 'RightLayout'
+            orientation: 'vertical'
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Report Problem'
+                    font_size: sp(40)
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: [50, 50, 50, 50]
+                    Label:
+                        text: 'Type: '
+                        font_size: sp(40)
+                    BoxLayout:
+                        id: typeDropDown
+                Button:
+                    text: 'Submit'
+                    font_size: '40sp'
+                    size_hint: (0.6, 0.8)
+                    pos_hint: {'x': 0.2, 'y': 0.1}
+                    on_release: root.on_Submit()
+            RelativeLayout:
+                Image:
+                    source: "../img/photo.png"

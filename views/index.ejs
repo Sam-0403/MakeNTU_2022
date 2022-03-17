@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/bootstrap-5.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap-5.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/index.css" />
+    <title><%= name%>'s Homepage</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand navbar-light bg-light" style="width: 100%; margin-bottom: 10vh;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto" style="padding: 5px 0px;">
+            <a class="nav-link active me-2 me-md-4" aria-current="page"><%= name%></a>
+            <form action="/logout?_method=DELETE" method="POST">
+              <button type="submit button" class="btn btn-dark">LOGOUT</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- <h1>Hello <%= name%></h1>
+    <form action="/logout?_method=DELETE" method="POST">
+      <button type="submit">LOGOUT</button>
+    </form> -->
+    <div class="main">
+      <h1>Hello <%= name%></h1>
+      <h2>當前積分：100分</h2>
+      <h2 id="type">本次分類：</h2>
+      <img src="/img/recycle-bin.png" alt="垃圾桶">
+      <h2 class="mt-4">正確回收可以得到1點</h2>
+    </div>
+    <script>
+      console.log('<%- name%>');
+      fetch(`/history/${'<%- email%>'}`)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(myJson) {
+          // console.log(myJson);
+          document.getElementById("type").innerHTML = `本次分類：${myJson.type}`;
+      });
+      window.setInterval(()=>{
+        fetch(`/history/${'<%- email%>'}`)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(myJson) {
+          // console.log(myJson);
+          document.getElementById("type").innerHTML = `本次分類：${myJson.type}`;
+        });
+      }, 1000)
+    </script>
+  </body>
+</html>

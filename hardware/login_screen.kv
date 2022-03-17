@@ -1,0 +1,72 @@
+#:kivy 2.1.0
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Orthogonal'
+            font_size: sp(100)
+        BoxLayout:
+            orientation: 'horizontal'
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    padding: [150, 200, 150, 200]
+                    ToggleButton:
+                        text: root.state
+                        font_size: '40sp'
+                        on_state: root.on_state_change()
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'vertical'
+                    id: inputForm
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        id: emailLayout
+                        padding: [50, 50, 50, 50]
+                        Label:
+                            text: 'Email: '
+                            font_size: '30sp'
+                        TextInput:
+                            id: emailInput
+                            hint_text:'Enter Your Email'
+                            on_text: root.on_email_text()
+                            font_size: '20sp'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        id: passwordLayout
+                        padding: [50, 50, 50, 50]
+                        Label:
+                            text: 'Password: '
+                            font_size: '30sp'
+                        TextInput:
+                            password: True
+                            id: passwordInput
+                            hint_text:'Enter Your Password'
+                            on_text: root.on_password_text()
+                            font_size: '20sp'
+                    # BoxLayout:
+                    #     orientation: 'horizontal'
+                    #     padding: [50, 50, 50, 50]
+                    #         Label:
+                    #             text: 'ID Card: '
+                    #             font_size: '30sp'
+                    #         TextInput:
+                    #             password: True
+                    #             id: rfidInput
+                    #             hint_text:'Connect Your ID Card'
+                    #             on_text: root.on_rfid_text()
+                    #             font_size: '20sp'
+                BoxLayout:
+                    orientation: 'vertical'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        padding: [50, 50, 50, 50]
+                        Image:
+                            source: '../img/rfid.png'
+                        BoxLayout:
+                            padding: [50, 50, 50, 50]
+                            Button:
+                                text:'Log In'
+                                font_size: '30sp'
+                                on_release: root.on_login()
