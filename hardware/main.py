@@ -9,8 +9,9 @@ from login_screen import LoginScreen
 from kivy.clock import Clock
 from functools import partial
 
-import RPi.GPIO as GPIO
-from get_rfid import read_RFID
+# import RPi.GPIO as GPIO
+# from get_rfid import read_RFID
+from classify import Decide
 
 Config.set('graphics', 'resizable', True)
 
@@ -23,7 +24,9 @@ currentUser = "Sam Cheng"
 
 class ClassificationApp(App):
     user = ''
+    ai_model = None
     def build(self):
+        self.ai_model = Decide("hardware/0319_best.pth")
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(self.on_login, name="LoginScreen"))
         # self.user = UserScreen(currentUser, 100, self.on_submit, name="UserScreen")
@@ -34,7 +37,7 @@ class ClassificationApp(App):
     def switch_to_user(self, name, *largs):
         if self.user != '':
             self.sm.remove_widget(self.user)
-        self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
+        self.user = UserScreen(name, 100, self.on_submit, self.ai_model, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
 
@@ -50,15 +53,8 @@ class ClassificationApp(App):
     # def on_start(self):
     #     Clock.schedule_interval(partial(self.rfid_read), 1)
 
-    # def rfid_read(self, dt):
-    #     read_RFID()
-
 
 if __name__ == '__main__':
-    # GPIO.setwarnings(False)
-    # GPIO.setmode(GPIO.BCM)
-    # GPIO.setup(22, GPIO.OUT)
-    read_RFID()
     Window.size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     Window.clearcolor = (0x6a/0xff, 0x5a/0xff, 0xcd/0xff, 1)
     classificationApp = ClassificationApp()
