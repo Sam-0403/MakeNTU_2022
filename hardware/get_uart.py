@@ -33,7 +33,6 @@ class UART_controller():
         #     data_left = self.ser.inWaiting()             #check for remaining byte
         #     received_data += self.ser.read(data_left)
         # print("Receiving Data Finish!")
-        sleep(5)
         received_data = self.ser.read_all()
         print(len(received_data))
         print("Receiving Data Finish!")
