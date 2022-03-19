@@ -3,7 +3,7 @@ from time import sleep
 
 if __name__ == "__main__":
 
-    ser = serial.Serial ("/dev/ttyAMA0", 115200)    #Open port with baud rate
+    ser = serial.Serial ("/dev/ttyS0", 115200)    #Open port with baud rate
     while True:
         # received_data = ser.read()              #read serial port
         sleep(0.03)
