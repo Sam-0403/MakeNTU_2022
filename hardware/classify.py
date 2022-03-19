@@ -113,8 +113,9 @@ class Decide():
 # dd.image_loader("/S_10313763.jpg")
 
 if __name__ == "__main__":
-    dd = Decide("0319_best.pth")
+    # dd = Decide("0319_best.pth")
     # dd.image_loader("S__10313763.jpg")
-    os.chdir('/media/pi/_s_W_Ma_')
-    dd.image_loader(os.path.abspath('example.jpg'))
+    # os.chdir('/media/pi/_s_W_Ma_')
+    os.chdir('/home/pi/Desktop')
+    # dd.image_loader(os.path.abspath('example.jpg'))
     # dd.image_loader(os.path.abspath('/media/pi/_s_W_Ma_/example.jpg'))
