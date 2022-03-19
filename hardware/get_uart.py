@@ -50,7 +50,7 @@ class UART_controller():
 
 if __name__ == "__main__":
 
-    ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=30)
+    ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=0.1)
     # ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
     print("Configure UART Success!")
     ser.write(b'S')
@@ -59,6 +59,10 @@ if __name__ == "__main__":
     # received_data = ser.read_all()
     # print(len(received_data))
     # print("Receiving Data Finish!")
+
+    sleep(30)
+    received_data = ser.read_all()
+    print (received_data)
 
     while True:
         # received_data = ser.read(153600)              #read serial port
