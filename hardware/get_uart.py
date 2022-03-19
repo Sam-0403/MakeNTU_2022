@@ -31,6 +31,7 @@ class UART_controller():
         try:
             image = Image.open(io.BytesIO(received_data))
             image.save('temp.jpg')
+            print("Save Success")
         except:
             print("Save Error")
         # return received_data

@@ -39,8 +39,8 @@ class RFIDInput(BoxLayout):
 class LoginScreen(Screen):
     userName = StringProperty('None')
     state = StringProperty('Login')
-    email = ''
-    password = ''
+    email = 'sam22187212@gmail.com'
+    password = 'Samsam22187212'
     rfid = ''
     rfidInput = ObjectProperty()
     def __init__(self, onLogin, **kwargs):
