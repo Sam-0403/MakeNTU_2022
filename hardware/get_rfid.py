@@ -3,10 +3,9 @@ import sys
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 
-# reader = SimpleMFRC522()
+reader = SimpleMFRC522()
 
 def read_RFID():
-    reader = SimpleMFRC522()
     try:
         id, text = reader.read()
         print("ID: %s\nText: %s" % (id,text))
@@ -14,13 +13,13 @@ def read_RFID():
         print("None RFID!")
         
 
-# if __name__ == "__main__":
-#     try:
-#         while True:
-#             print("Hold a tag near the reader")
-#             id, text = reader.read()
-#             print("ID: %s\nText: %s" % (id,text))
-#             sleep(5)
-#     except KeyboardInterrupt:
-#         GPIO.cleanup()
-#         raise
+if __name__ == "__main__":
+    try:
+        while True:
+            print("Hold a tag near the reader")
+            id, text = reader.read()
+            print("ID: %s\nText: %s" % (id,text))
+            sleep(5)
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        raise
