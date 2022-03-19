@@ -35,7 +35,7 @@ class UART_controller():
         # print("Receiving Data Finish!")
         sleep(5)
         received_data = self.ser.read_all()
-
+        print(len(received_data))
         print("Receiving Data Finish!")
         try:
             image = Image.open(io.BytesIO(received_data))
