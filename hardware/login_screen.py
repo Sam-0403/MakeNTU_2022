@@ -47,7 +47,6 @@ class LoginScreen(Screen):
         super(LoginScreen, self).__init__(**kwargs)
         self.onLogin = onLogin
         self.userName = "Sam Cheng"
-        Clock.schedule_interval(self.rfid_read, 1)
 
     def rfid_read(self, dt):
         read_RFID()
@@ -65,6 +64,9 @@ class LoginScreen(Screen):
             self.password = ''
             self.ids.passwordInput.text = ''
             self.onLogin(self.userName)
+        
+    def on_start(self):
+        Clock.schedule_interval(self.rfid_read, 1)
 
     def on_register(self):
         data = {
