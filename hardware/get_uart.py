@@ -15,11 +15,10 @@ class UART_controller():
         received_data += self.ser.read(data_left)
         return received_data
 
-    def receive_time(self, dt):
+    def receive_time(self, message):
+        print("Writing Data!")
+        self.ser.write(message)
         print("Receiving Data!")
-        time_end = time() + dt
-        print(time())
-        print(time_end)
 
         # received_data = self.ser.read()
         # sleep(0.03)
@@ -33,6 +32,7 @@ class UART_controller():
         #     data_left = self.ser.inWaiting()             #check for remaining byte
         #     received_data += self.ser.read(data_left)
         # print("Receiving Data Finish!")
+        sleep(5)
         received_data = self.ser.read_all()
         print(len(received_data))
         print("Receiving Data Finish!")

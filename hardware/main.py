@@ -41,7 +41,7 @@ class ClassificationApp(App):
     def switch_to_user(self, name, *largs):
         if self.user != '':
             self.sm.remove_widget(self.user)
-        self.write_start()
+        # self.write_start()
         self.save_image()
         self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
@@ -60,11 +60,11 @@ class ClassificationApp(App):
     def check_received(self, dt):
         print(self.uart_controller.receive())
 
-    def write_start(self):
-        self.uart_controller.write(b'S')
+    # def write_start(self):
+    #     self.uart_controller.write(b'S')
 
     def save_image(self):
-        t = Thread(target=self.uart_controller.receive_time, args=(30000,))
+        t = Thread(target=self.uart_controller.receive_time, args=(b'S',))
         # set daemon to true so the thread dies when app is closed
         t.daemon = True
         # start the thread
