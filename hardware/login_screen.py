@@ -22,7 +22,7 @@ class RFIDInput(BoxLayout):
     def __init__(self, onText, **kwargs):
         super(RFIDInput, self).__init__(**kwargs)
         self.orientation = 'horizontal'
-        self.padding = [20, 20, 20, 20]
+        # self.padding = [20, 20, 20, 20]
         self.label = Label(text='ID Card: ',font_size='30sp')
         self.input = TextInput(password=True, hint_text='Connect Your ID Card', font_size='20sp')
         self.ids['rfidInput'] = self.input
@@ -47,7 +47,7 @@ class LoginScreen(Screen):
         super(LoginScreen, self).__init__(**kwargs)
         self.onLogin = onLogin
         self.userName = "Sam Cheng"
-        # Clock.schedule_interval(self.rfid_read, 1)
+        Clock.schedule_interval(self.rfid_read, 1)
 
     def rfid_read(self, dt):
         read_RFID()
@@ -88,14 +88,14 @@ class LoginScreen(Screen):
             self.state = 'Register'
             if self.rfidInput==None:
                 self.rfidInput = RFIDInput(self.on_rfid_text)
-            self.ids.emailLayout.padding = [20, 20, 20, 20]
-            self.ids.passwordLayout.padding = [20, 20, 20, 20]
+            # self.ids.emailLayout.padding = [20, 20, 20, 20]
+            # self.ids.passwordLayout.padding = [20, 20, 20, 20]
             self.ids.inputForm.add_widget(self.rfidInput)
         else:
             self.state = 'Login'
             if self.rfidInput!=None:
-                self.ids.emailLayout.padding = [50, 50, 50, 50]
-                self.ids.passwordLayout.padding = [50, 50, 50, 50]
+                # self.ids.emailLayout.padding = [50, 50, 50, 50]
+                # self.ids.passwordLayout.padding = [50, 50, 50, 50]
                 self.ids.inputForm.remove_widget(self.rfidInput)
     
     def on_email_text(self):
