@@ -117,5 +117,6 @@ if __name__ == "__main__":
     # dd.image_loader("S__10313763.jpg")
     # os.chdir('/media/pi/_s_W_Ma_')
     os.chdir('/home/pi/Desktop')
+    print("Success")
     # dd.image_loader(os.path.abspath('example.jpg'))
     # dd.image_loader(os.path.abspath('/media/pi/_s_W_Ma_/example.jpg'))
