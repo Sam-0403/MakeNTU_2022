@@ -37,16 +37,13 @@ class UserScreen(Screen):
     userName = StringProperty('')
     userPoint = NumericProperty(0)
     typeDropDown = ObjectProperty()
-    ai_model = None
 
-    def __init__(self, userName, userPoint, onSubmit, ai_model, **kwargs):
+    def __init__(self, userName, userPoint, onSubmit, **kwargs):
         super(UserScreen, self).__init__(**kwargs)
         self.userName = userName
         self.userPoint = userPoint
         self.switch_to_login = onSubmit
         self.typeDropDown.add_widget(TypeDropDown())
-        self.ai_model = ai_model
-        self.ai_model.image_loader("S__10313763.jpg")
 
     def on_Submit(self):
         self.switch_to_login()

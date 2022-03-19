@@ -37,9 +37,10 @@ class ClassificationApp(App):
     def switch_to_user(self, name, *largs):
         if self.user != '':
             self.sm.remove_widget(self.user)
-        self.user = UserScreen(name, 100, self.on_submit, self.ai_model, name="UserScreen")
+        self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
+        self.ai_model.image_loader("S__10313763.jpg")
 
     def switch_to_login(self):
         self.sm.current = "LoginScreen"
