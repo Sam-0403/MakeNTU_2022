@@ -59,7 +59,7 @@ class ClassificationApp(App):
         print(self.uart_controller.receive())
 
     def write_start(self):
-        self.uart_controller.write("S")
+        self.uart_controller.write(b'S')
 
     # def on_start(self):
     #     Clock.schedule_interval(partial(self.check_received), 1)
