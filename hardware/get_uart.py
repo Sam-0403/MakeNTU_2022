@@ -28,8 +28,11 @@ class UART_controller():
             data_left = self.ser.inWaiting()             #check for remaining byte
             received_data += self.ser.read(data_left)
 
-        image = Image.open(io.BytesIO(received_data))
-        image.save('temp.jpg')
+        try:
+            image = Image.open(io.BytesIO(received_data))
+            image.save('temp.jpg')
+        except:
+            print("Save Error")
         # return received_data
 
     def write(self, message):
