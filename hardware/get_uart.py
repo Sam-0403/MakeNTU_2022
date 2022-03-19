@@ -53,8 +53,6 @@ if __name__ == "__main__":
     ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
     print("Configure UART Success!")
     ser.write(b'S')
-
-    sleep(10)
     received_data = ser.read_all()
     print(len(received_data))
     print("Receiving Data Finish!")
