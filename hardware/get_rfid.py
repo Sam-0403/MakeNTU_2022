@@ -5,6 +5,14 @@ from mfrc522 import SimpleMFRC522
 
 reader = SimpleMFRC522()
 
+def read_RFID():
+    try:
+        id, text = reader.read()
+        print("ID: %s\nText: %s" % (id,text))
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        raise
+
 if __name__ == "__main__":
     try:
         while True:
