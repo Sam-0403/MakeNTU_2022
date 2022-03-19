@@ -67,6 +67,7 @@ if __name__ == "__main__":
 
     while True:
         # received_data = ser.read(153600)              #read serial port
+        ser.write(b'S')
         received_data = ser.read()
         sleep(0.03)
         data_left = ser.inWaiting()             #check for remaining byte
