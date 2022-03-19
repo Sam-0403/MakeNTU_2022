@@ -8,6 +8,7 @@ class UART_controller():
     def __init__(self):
         # self.ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
         self.ser = serial.Serial ("/dev/ttyAMA0", 115200)
+        self.ser.write(b'S')
     
     def receive(self):
         received_data = self.ser.read()              #read serial port
@@ -55,7 +56,7 @@ if __name__ == "__main__":
     # ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
     ser = UART_controller()
     print("Configure UART Success!")
-    ser.write(b'S')
+    # ser.write(b'S')
     # ser.write(b'S')
 
     # sleep(5)
@@ -67,12 +68,12 @@ if __name__ == "__main__":
     # received_data = ser.read_all()
     # print (received_data)
 
-    # while True:
-    #     # received_data = ser.read(153600)              #read serial port
-    #     ser.write(b'S')
-    #     received_data = ser.read()
-    #     sleep(0.03)
-    #     data_left = ser.inWaiting()             #check for remaining byte
-    #     received_data += ser.read(data_left)
-    #     print (received_data)                   #print received data
-    #     # ser.write(received_data)                #transmit data serially 
+    while True:
+        # received_data = ser.read(153600)              #read serial port
+        # ser.write(b'S')
+        received_data = ser.read()
+        sleep(0.03)
+        data_left = ser.inWaiting()             #check for remaining byte
+        received_data += ser.read(data_left)
+        print (received_data)                   #print received data
+        # ser.write(received_data)                #transmit data serially 
