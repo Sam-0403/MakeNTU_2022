@@ -49,7 +49,7 @@ class ClassificationApp(App):
         self.sm.current = "UserScreen"
         sleep(2)
         # self.ai_model.image_loader("S__10313763.jpg")
-        self.ai_model.image_loader("/media/pi/_s_W_Ma_/example.jpg")
+        self.ai_model.image_loader(r"/media/pi/_s_W_Ma_/example.jpg")
 
     def switch_to_login(self):
         self.sm.current = "LoginScreen"
