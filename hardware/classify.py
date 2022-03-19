@@ -112,5 +112,6 @@ class Decide():
 # dd.image_loader("/S_10313763.jpg")
 
 if __name__ == "__main__":
-    dd = Decide("./0319_best.pth")
-    dd.image_loader("./S_10313763.jpg")
+    print()
+    dd = Decide("0319_best.pth")
+    dd.image_loader("S_10313763.jpg")
