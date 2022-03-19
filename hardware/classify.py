@@ -116,7 +116,7 @@ if __name__ == "__main__":
     # dd = Decide("0319_best.pth")
     # dd.image_loader("S__10313763.jpg")
     # os.chdir('/media/pi/_s_W_Ma_')
-    os.chdir('/media/')
+    os.chdir('/media/pi/')
     print(os.listdir())
     print("Success")
     # dd.image_loader(os.path.abspath('example.jpg'))
