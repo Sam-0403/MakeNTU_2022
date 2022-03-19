@@ -40,6 +40,7 @@ class ClassificationApp(App):
     def switch_to_user(self, name, *largs):
         if self.user != '':
             self.sm.remove_widget(self.user)
+        self.write_start()
         self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
@@ -57,8 +58,11 @@ class ClassificationApp(App):
     def check_received(self, dt):
         print(self.uart_controller.receive())
 
-    def on_start(self):
-        Clock.schedule_interval(partial(self.check_received), 1)
+    def write_start(self):
+        self.uart_controller.write("S")
+
+    # def on_start(self):
+    #     Clock.schedule_interval(partial(self.check_received), 1)
 
 
 if __name__ == '__main__':
