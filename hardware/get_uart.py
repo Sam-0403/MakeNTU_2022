@@ -28,7 +28,7 @@ class UART_controller():
             sleep(0.03)
             data_left = self.ser.inWaiting()             #check for remaining byte
             received_data += self.ser.read(data_left)
-
+        print("Receiving Data Finish!")
         try:
             image = Image.open(io.BytesIO(received_data))
             image.save('temp.jpg')
