@@ -20,8 +20,6 @@ if __name__ == "__main__":
             id, text = reader.read()
             print("ID: %s\nText: %s" % (id,text))
             sleep(5)
-    except KeyboardInterrupt:
-        GPIO.cleanup()
-        raise
     finally:
         GPIO.cleanup()
+        raise
