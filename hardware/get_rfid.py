@@ -1,8 +1,9 @@
 from time import sleep
 import sys
 import RPi.GPIO as GPIO
-# from mfrc522 import SimpleMFRC522
-import SimpleMFRC522
+from mfrc522 import SimpleMFRC522
+
+GPIO.cleanup()
 
 reader = SimpleMFRC522()
 
@@ -24,3 +25,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         GPIO.cleanup()
         raise
+    finally:
+        GPIO.cleanup()
