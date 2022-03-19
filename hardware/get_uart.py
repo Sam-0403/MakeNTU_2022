@@ -16,6 +16,7 @@ class UART_controller():
         return received_data
 
     def receive_time(self, dt):
+        print("Receiving Data!")
         time_end = time() + dt
 
         received_data = self.ser.read()
