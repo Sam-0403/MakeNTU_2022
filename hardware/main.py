@@ -15,6 +15,7 @@ from functools import partial
 from classify import Decide
 from get_uart import UART_controller
 from threading import Thread
+import os
 
 Config.set('graphics', 'resizable', True)
 
@@ -49,7 +50,8 @@ class ClassificationApp(App):
         self.sm.current = "UserScreen"
         sleep(2)
         # self.ai_model.image_loader("S__10313763.jpg")
-        self.ai_model.image_loader(r"/media/pi/_s_W_Ma_/example.jpg")
+        # self.ai_model.image_loader(r"/media/pi/_s_W_Ma_/example.jpg")
+        self.ai_model.image_loader(os.path.join('/media/pi/_s_W_Ma_',os.sep, 'example.jpg'))
 
     def switch_to_login(self):
         self.sm.current = "LoginScreen"
