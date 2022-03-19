@@ -50,7 +50,7 @@ class UART_controller():
 
 if __name__ == "__main__":
 
-    ser = serial.Serial ("/dev/ttyAMA0", 115200, 10)    #Open port with baud rate
+    ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
     print("Configure UART Success!")
     ser.write(b'S')
 
