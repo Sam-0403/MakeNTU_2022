@@ -41,6 +41,7 @@ class ClassificationApp(App):
         if self.user != '':
             self.sm.remove_widget(self.user)
         self.write_start()
+        self.uart_controller.receive_time(100)
         self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"

@@ -1,5 +1,7 @@
 import serial
-from time import sleep
+from time import sleep, time
+import io
+import PIL.Image as Image
 
 class UART_controller():
     ser = None
@@ -12,6 +14,23 @@ class UART_controller():
         data_left = self.ser.inWaiting()             #check for remaining byte
         received_data += self.ser.read(data_left)
         return received_data
+
+    def receive_time(self, dt):
+        time_end = time() + dt
+
+        received_data = self.ser.read()
+        sleep(0.03)
+        data_left = self.ser.inWaiting()             #check for remaining byte
+        received_data += self.ser.read(data_left)
+        while time()<time_end:
+            received_data += self.ser.read()              #read serial port
+            sleep(0.03)
+            data_left = self.ser.inWaiting()             #check for remaining byte
+            received_data += self.ser.read(data_left)
+
+        image = Image.open(io.BytesIO(received_data))
+        image.save('temp.jpg')
+        # return received_data
 
     def write(self, message):
         self.ser.write(message)
