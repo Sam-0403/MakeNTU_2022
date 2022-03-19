@@ -6,7 +6,7 @@ import PIL.Image as Image
 class UART_controller():
     ser = None
     def __init__(self):
-        self.ser = serial.Serial ("/dev/ttyAMA0", 115200)    #Open port with baud rate
+        self.ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
     
     def receive(self):
         received_data = self.ser.read()              #read serial port
@@ -21,17 +21,20 @@ class UART_controller():
         print(time())
         print(time_end)
 
-        received_data = self.ser.read()
-        sleep(0.03)
-        data_left = self.ser.inWaiting()             #check for remaining byte
-        received_data += self.ser.read(data_left)
-        print("First Receive")
-        while time()<time_end:
-            print("Looping")
-            received_data += self.ser.read()              #read serial port
-            sleep(0.03)
-            data_left = self.ser.inWaiting()             #check for remaining byte
-            received_data += self.ser.read(data_left)
+        # received_data = self.ser.read()
+        # sleep(0.03)
+        # data_left = self.ser.inWaiting()             #check for remaining byte
+        # received_data += self.ser.read(data_left)
+        # print("First Receive")
+        # while time()<time_end:
+        #     print("Looping")
+        #     received_data += self.ser.read()              #read serial port
+        #     sleep(0.03)
+        #     data_left = self.ser.inWaiting()             #check for remaining byte
+        #     received_data += self.ser.read(data_left)
+        # print("Receiving Data Finish!")
+        sleep(5)
+        self.ser.read_all()
         print("Receiving Data Finish!")
         try:
             image = Image.open(io.BytesIO(received_data))
