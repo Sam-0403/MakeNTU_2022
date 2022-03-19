@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
 from PIL import Image
+import os
 
 # "ConcatDataset" and "Subset" are possibly useful when doing semi-supervised learning.
 
@@ -113,4 +114,5 @@ class Decide():
 
 if __name__ == "__main__":
     dd = Decide("0319_best.pth")
-    dd.image_loader("S__10313763.jpg")
+    # dd.image_loader("S__10313763.jpg")
+    dd.image_loader(os.path.abspath('/media/pi/_s_W_Ma_/example.jpg'))
