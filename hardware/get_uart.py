@@ -6,7 +6,8 @@ import PIL.Image as Image
 class UART_controller():
     ser = None
     def __init__(self):
-        self.ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
+        # self.ser = serial.Serial ("/dev/ttyAMA0", 115200, timeout=10)    #Open port with baud rate
+        self.ser = serial.Serial ("/dev/ttyAMA0", 115200)
     
     def receive(self):
         received_data = self.ser.read()              #read serial port

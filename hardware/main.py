@@ -1,3 +1,4 @@
+from time import sleep
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.config import Config
@@ -41,12 +42,14 @@ class ClassificationApp(App):
     def switch_to_user(self, name, *largs):
         if self.user != '':
             self.sm.remove_widget(self.user)
-        # self.write_start()
+        self.write_start()
         self.save_image()
         self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
-        self.ai_model.image_loader("S__10313763.jpg")
+        sleep(0.1)
+        # self.ai_model.image_loader("S__10313763.jpg")
+        self.ai_model.image_loader("/media/pi/_s_W_Ma_/example.jpg")
 
     def switch_to_login(self):
         self.sm.current = "LoginScreen"
@@ -60,15 +63,15 @@ class ClassificationApp(App):
     def check_received(self, dt):
         print(self.uart_controller.receive())
 
-    # def write_start(self):
-    #     self.uart_controller.write(b'S')
+    def write_start(self):
+        self.uart_controller.write(b'S')
 
-    def save_image(self):
-        t = Thread(target=self.uart_controller.receive_time, args=(b'S',))
+    # def save_image(self):
+        # t = Thread(target=self.uart_controller.receive_time, args=(b'S',))
         # set daemon to true so the thread dies when app is closed
-        t.daemon = True
-        # start the thread
-        t.start()
+        # t.daemon = True
+        # # start the thread
+        # t.start()
 
     # def on_start(self):
     #     Clock.schedule_interval(partial(self.check_received), 1)
