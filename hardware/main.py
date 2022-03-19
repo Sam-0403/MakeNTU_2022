@@ -10,6 +10,7 @@ from kivy.clock import Clock
 from functools import partial
 
 import RPi.GPIO as GPIO
+from get_rfid import read_RFID
 
 Config.set('graphics', 'resizable', True)
 
@@ -46,11 +47,17 @@ class ClassificationApp(App):
     def on_submit(self):
         self.switch_to_login()
 
+    def on_start(self):
+        Clock.schedule_interval(partial(self.rfid_read), 1)
+
+    def rfid_read(self, dt):
+        read_RFID()
+
 
 if __name__ == '__main__':
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(22, GPIO.OUT)
+    # GPIO.setwarnings(False)
+    # GPIO.setmode(GPIO.BCM)
+    # GPIO.setup(22, GPIO.OUT)
     Window.size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     Window.clearcolor = (0x6a/0xff, 0x5a/0xff, 0xcd/0xff, 1)
     classificationApp = ClassificationApp()

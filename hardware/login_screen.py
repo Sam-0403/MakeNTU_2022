@@ -48,9 +48,6 @@ class LoginScreen(Screen):
         self.onLogin = onLogin
         self.userName = "Sam Cheng"
 
-    def rfid_read(self, dt):
-        read_RFID()
-
     def on_login(self):
         data = {
             'email': self.email,
@@ -64,9 +61,6 @@ class LoginScreen(Screen):
             self.password = ''
             self.ids.passwordInput.text = ''
             self.onLogin(self.userName)
-        
-    def on_start(self):
-        Clock.schedule_interval(self.rfid_read, 1)
 
     def on_register(self):
         data = {
