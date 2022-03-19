@@ -5,9 +5,14 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.properties import StringProperty, ObjectProperty
 from send_data import send_data
+from kivy.clock import Clock
+from functools import partial
+from get_rfid import read_RFID
 
-login_url = 'http://127.0.0.1:8000/userLogin'
-register_url = 'http://127.0.0.1:8000/userRegister'
+# login_url = 'http://127.0.0.1:8000/userLogin'
+# register_url = 'http://127.0.0.1:8000/userRegister'
+login_url = 'https://sam-cheng-user-auth.herokuapp.com/userLogin'
+register_url = 'https://sam-cheng-user-auth.herokuapp.com/userRegister'
 
 Builder.load_file("login_screen.kv")
 
@@ -42,6 +47,10 @@ class LoginScreen(Screen):
         super(LoginScreen, self).__init__(**kwargs)
         self.onLogin = onLogin
         self.userName = "Sam Cheng"
+        Clock.schedule_interval(self.rfid_read, 1)
+
+    def rfid_read(self, dt):
+        read_RFID()
 
     def on_login(self):
         data = {
@@ -70,6 +79,9 @@ class LoginScreen(Screen):
             self.password = ''
             self.ids.passwordInput.text = ''
             self.onLogin(self.userName)
+
+    # def on_start(self):
+    #     Clock.schedule_interval(partial(read_RFID), 1)
         
     def on_state_change(self):
         if self.state == 'Login':

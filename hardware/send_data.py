@@ -4,7 +4,8 @@ import requests
 # Only for localhost
 # os.environ['NO_PROXY'] = '127.0.0.1'
 
-url = 'http://127.0.0.1:8000/sendData'
+# url = 'http://127.0.0.1:8000/sendData'
+url = 'https://sam-cheng-user-auth.herokuapp.com/sendData'
 email = 'sam22187212@gmail.com'
 # post_data = requests.post('http://127.0.0.1:8000/sendData', data={"type": "一般垃圾"})
 
