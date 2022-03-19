@@ -51,7 +51,8 @@ class ClassificationApp(App):
         sleep(2)
         # self.ai_model.image_loader("S__10313763.jpg")
         # self.ai_model.image_loader(r"/media/pi/_s_W_Ma_/example.jpg")
-        self.ai_model.image_loader(os.path.join('/media/pi/_s_W_Ma_',os.sep, 'example.jpg'))
+        os.chdir(r'/media/pi/_s_W_Ma_')
+        self.ai_model.image_loader('example.jpg')
 
     def switch_to_login(self):
         self.sm.current = "LoginScreen"
