@@ -71,9 +71,9 @@ if __name__ == "__main__":
     while True:
         # received_data = ser.read(153600)              #read serial port
         # ser.write(b'S')
-        received_data = ser.read()
+        received_data = ser.ser.read()
         sleep(0.03)
-        data_left = ser.inWaiting()             #check for remaining byte
-        received_data += ser.read(data_left)
+        data_left = ser.ser.inWaiting()             #check for remaining byte
+        received_data += ser.ser.read(data_left)
         print (received_data)                   #print received data
         # ser.write(received_data)                #transmit data serially 
