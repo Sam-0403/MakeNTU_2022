@@ -49,6 +49,7 @@ class ClassificationApp(App):
 
 if __name__ == '__main__':
     GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(22, GPIO.OUT)
     Window.size = (WINDOW_WIDTH, WINDOW_HEIGHT)
     Window.clearcolor = (0x6a/0xff, 0x5a/0xff, 0xcd/0xff, 1)
