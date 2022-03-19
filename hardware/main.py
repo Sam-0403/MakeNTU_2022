@@ -47,7 +47,7 @@ class ClassificationApp(App):
         self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
-        sleep(0.1)
+        sleep(2)
         # self.ai_model.image_loader("S__10313763.jpg")
         self.ai_model.image_loader("/media/pi/_s_W_Ma_/example.jpg")
 
