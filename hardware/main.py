@@ -43,7 +43,7 @@ class ClassificationApp(App):
         if self.user != '':
             self.sm.remove_widget(self.user)
         self.write_start()
-        self.save_image()
+        # self.save_image()
         self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
