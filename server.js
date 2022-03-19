@@ -83,7 +83,8 @@ app.get("/python", checkAuthenticated, (req, res) => {
 app.get("/pythonFail", checkAuthenticated, (req, res) => {
   console.log("Login Fail");
   res.send({
-    name: 'None'
+    name: 'None',
+    email: 'None'
   });
 });
 
@@ -141,7 +142,7 @@ app.post(
   checkNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/python",
-    failureRedirect: "/userLogin",
+    failureRedirect: "/pythonFail",
     failureFlash: true,
   })
 );
