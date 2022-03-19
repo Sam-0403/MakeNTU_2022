@@ -3,10 +3,8 @@ import MFRC522
 import signal
 import time
  
-# def read_RFID():
-#     print("Read!!")
-
 if __name__ == "__main__":
+
     continue_reading = True
     
     # Capture SIGINT for cleanup when the script is aborted
@@ -21,7 +19,7 @@ if __name__ == "__main__":
     
     # Create an object of the class MFRC522
     MIFAREReader = MFRC522.MFRC522()
-
+    
     # Welcome message
     print ("Welcome to the MFRC522 data read example")
     print ("Press Ctrl-C to stop.")
