@@ -53,14 +53,17 @@ class LoginScreen(Screen):
             'email': self.email,
             'password': self.password
         }
-        user = send_data(login_url, data).json()
-        self.userName = user['name']
-        if self.userName!="None":
-            self.email = ''
-            self.ids.emailInput.text = ''
-            self.password = ''
-            self.ids.passwordInput.text = ''
-            self.onLogin(self.userName)
+        try:
+            user = send_data(login_url, data).json()
+            self.userName = user['name']
+            if self.userName!="None":
+                self.email = ''
+                self.ids.emailInput.text = ''
+                self.password = ''
+                self.ids.passwordInput.text = ''
+                self.onLogin(self.userName)
+        except:
+            self.userName = "None"
 
     def on_register(self):
         data = {

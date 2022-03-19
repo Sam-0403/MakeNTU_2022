@@ -14,7 +14,7 @@ class UART_controller():
         return received_data
 
     def write(self, message):
-        ser.write(message)
+        self.ser.write(message)
 
 
 if __name__ == "__main__":
