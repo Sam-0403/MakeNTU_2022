@@ -108,9 +108,9 @@ class Decide():
         return a
     
 
-dd = Decide("~/Desktop/0319_best.pth")
-dd.image_loader("~/Desktop/S_10313763.jpg")
+dd = Decide("../0319_best.pth")
+dd.image_loader("../S_10313763.jpg")
 
 if __name__ == "__main__":
-    dd = Decide("~/Desktop/0319_best.pth")
-    dd.image_loader("~/Desktop/S_10313763.jpg")
+    dd = Decide("../0319_best.pth")
+    dd.image_loader("../S_10313763.jpg")
