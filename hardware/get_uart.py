@@ -32,8 +32,8 @@ class UART_controller():
         #     data_left = self.ser.inWaiting()             #check for remaining byte
         #     received_data += self.ser.read(data_left)
         # print("Receiving Data Finish!")
-        received_data = self.ser.read_all()
         sleep(10)
+        received_data = self.ser.read_all()
         print(len(received_data))
         print("Receiving Data Finish!")
         try:
@@ -50,12 +50,19 @@ class UART_controller():
 
 if __name__ == "__main__":
 
-    ser = serial.Serial ("/dev/ttyAMA0", 115200)    #Open port with baud rate
+    ser = serial.Serial ("/dev/ttyAMA0", 115200, 10)    #Open port with baud rate
     print("Configure UART Success!")
-    while True:
-        received_data = ser.read()              #read serial port
-        sleep(0.03)
-        data_left = ser.inWaiting()             #check for remaining byte
-        received_data += ser.read(data_left)
-        print (received_data)                   #print received data
-        # ser.write(received_data)                #transmit data serially 
+    ser.write(b'S')
+
+    sleep(10)
+    received_data = ser.read_all()
+    print(len(received_data))
+    print("Receiving Data Finish!")
+
+    # while True:
+    #     received_data = ser.read()              #read serial port
+    #     sleep(0.03)
+    #     data_left = ser.inWaiting()             #check for remaining byte
+    #     received_data += ser.read(data_left)
+    #     print (received_data)                   #print received data
+    #     # ser.write(received_data)                #transmit data serially 
