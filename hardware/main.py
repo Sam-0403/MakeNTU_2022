@@ -64,7 +64,7 @@ class ClassificationApp(App):
         self.uart_controller.write(b'S')
 
     def save_image(self):
-        t = Thread(target=self.uart_controller.receive_time, args=(30,))
+        t = Thread(target=self.uart_controller.receive_time, args=(30000,))
         # set daemon to true so the thread dies when app is closed
         t.daemon = True
         # start the thread
