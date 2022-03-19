@@ -7,10 +7,10 @@ class UART_controller():
         self.ser = serial.Serial ("/dev/ttyAMA0", 115200)    #Open port with baud rate
     
     def receive(self):
-        received_data = ser.read()              #read serial port
+        received_data = self.ser.read()              #read serial port
         sleep(0.03)
-        data_left = ser.inWaiting()             #check for remaining byte
-        received_data += ser.read(data_left)
+        data_left = self.ser.inWaiting()             #check for remaining byte
+        received_data += self.ser.read(data_left)
         return received_data
 
 
