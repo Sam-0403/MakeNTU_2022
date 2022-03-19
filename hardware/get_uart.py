@@ -24,6 +24,7 @@ class UART_controller():
         data_left = self.ser.inWaiting()             #check for remaining byte
         received_data += self.ser.read(data_left)
         while time()<time_end:
+            print("Looping")
             received_data += self.ser.read()              #read serial port
             sleep(0.03)
             data_left = self.ser.inWaiting()             #check for remaining byte
