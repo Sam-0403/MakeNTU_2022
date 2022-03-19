@@ -12,6 +12,7 @@ from functools import partial
 # import RPi.GPIO as GPIO
 # from get_rfid import read_RFID
 from classify import Decide
+from get_uart import UART_controller
 
 Config.set('graphics', 'resizable', True)
 
@@ -25,8 +26,10 @@ currentUser = "Sam Cheng"
 class ClassificationApp(App):
     user = ''
     ai_model = None
+    uart_controller = None
     def build(self):
         self.ai_model = Decide("0319_best.pth")
+        self.uart_controller = UART_controller()
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(self.on_login, name="LoginScreen"))
         # self.user = UserScreen(currentUser, 100, self.on_submit, name="UserScreen")
@@ -51,8 +54,11 @@ class ClassificationApp(App):
     def on_submit(self):
         self.switch_to_login()
 
-    # def on_start(self):
-    #     Clock.schedule_interval(partial(self.rfid_read), 1)
+    def check_received(self, dt):
+        print(self.uart_controller.receive())
+
+    def on_start(self):
+        Clock.schedule_interval(partial(self.check_received), 1)
 
 
 if __name__ == '__main__':
