@@ -46,7 +46,7 @@ class UserScreen(Screen):
         self.switch_to_login = onSubmit
         self.typeDropDown.add_widget(TypeDropDown())
         self.ai_model = ai_model
-        self.ai_model.image_loader("hardware/S__10313763.jpg")
+        self.ai_model.image_loader("S__10313763.jpg")
 
     def on_Submit(self):
         self.switch_to_login()

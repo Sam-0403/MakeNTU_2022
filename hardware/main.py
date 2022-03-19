@@ -26,7 +26,7 @@ class ClassificationApp(App):
     user = ''
     ai_model = None
     def build(self):
-        self.ai_model = Decide("hardware/0319_best.pth")
+        self.ai_model = Decide("0319_best.pth")
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(self.on_login, name="LoginScreen"))
         # self.user = UserScreen(currentUser, 100, self.on_submit, name="UserScreen")
