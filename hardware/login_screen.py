@@ -48,9 +48,9 @@ class LoginScreen(Screen):
         self.onLogin = onLogin
         self.userName = "Sam Cheng"
         self.email = 'sam22187212@gmail.com'
-        self.ids.emailInput.text = 'sam22187212@gmail.com'
+        # self.ids.emailInput.text = 'sam22187212@gmail.com'
         self.password = 'Samsam22187212'
-        self.ids.passwordInput.text = 'Samsam22187212'
+        # self.ids.passwordInput.text = 'Samsam22187212'
 
     def on_login(self):
         data = {
@@ -62,9 +62,9 @@ class LoginScreen(Screen):
             self.userName = user['name']
             if self.userName!="None":
                 self.email = 'sam22187212@gmail.com'
-                self.ids.emailInput.text = 'sam22187212@gmail.com'
+                # self.ids.emailInput.text = 'sam22187212@gmail.com'
                 self.password = 'Samsam22187212'
-                self.ids.passwordInput.text = 'Samsam22187212'
+                # self.ids.passwordInput.text = 'Samsam22187212'
                 self.onLogin(self.userName)
         except:
             self.userName = "None"
@@ -78,9 +78,9 @@ class LoginScreen(Screen):
         self.userName = user['name']
         if self.userName!="None":
             self.email = 'sam22187212@gmail.com'
-            self.ids.emailInput.text = 'sam22187212@gmail.com'
+            # self.ids.emailInput.text = 'sam22187212@gmail.com'
             self.password = 'Samsam22187212'
-            self.ids.passwordInput.text = 'Samsam22187212'
+            # self.ids.passwordInput.text = 'Samsam22187212'
             self.onLogin(self.userName, self.email)
 
     # def on_start(self):
