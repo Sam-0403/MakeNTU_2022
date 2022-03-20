@@ -40,6 +40,7 @@ class UserScreen(Screen):
     userPoint = NumericProperty(0)
     typeDropDown = ObjectProperty()
     type = StringProperty('')
+    image = StringProperty('./img/garbage-bag.png')
 
     def __init__(self, userName, userPoint, onSubmit, type, email, **kwargs):
         super(UserScreen, self).__init__(**kwargs)
@@ -47,6 +48,15 @@ class UserScreen(Screen):
             "type": type,
             "email": email
         }
+        if type == "glass":
+            self.image = "./img/glass-bin.png"
+        if type == "metal":
+            self.image = "./img/metal.png"
+        if type == "paper":
+            self.image = "./img/paper-bin.png"
+        if type == "plastic":
+            self.image = "./img/plastic.png"
+
         user = send_data('https://sam-cheng-user-auth.herokuapp.com/sendData', data)
         self.userName = userName
         self.userPoint = userPoint
