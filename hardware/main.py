@@ -47,7 +47,7 @@ class ClassificationApp(App):
         # self.save_image()
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
-        sleep(5)
+        sleep(10)
         # self.ai_model.image_loader("S__10313763.jpg")
         # self.ai_model.image_loader(r"/media/pi/_s_W_Ma_/example.jpg")
         os.chdir('/media/pi/_s_W_Ma_1')

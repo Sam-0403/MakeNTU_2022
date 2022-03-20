@@ -39,6 +39,7 @@ class UserScreen(Screen):
     userName = StringProperty('')
     userPoint = NumericProperty(0)
     typeDropDown = ObjectProperty()
+    type = StringProperty('')
 
     def __init__(self, userName, userPoint, onSubmit, type, email, **kwargs):
         super(UserScreen, self).__init__(**kwargs)
@@ -46,10 +47,11 @@ class UserScreen(Screen):
             "type": type,
             "email": email
         }
-        send_data('https://sam-cheng-user-auth.herokuapp.com/sendData', {"type": type, "email": email})
+        user = send_data('https://sam-cheng-user-auth.herokuapp.com/sendData', data)
         self.userName = userName
         self.userPoint = userPoint
         self.switch_to_login = onSubmit
+        self.type = type
         self.typeDropDown.add_widget(TypeDropDown())
 
     def on_Submit(self):
