@@ -65,7 +65,7 @@ class LoginScreen(Screen):
                 # self.ids.emailInput.text = 'sam22187212@gmail.com'
                 self.password = 'Samsam22187212'
                 # self.ids.passwordInput.text = 'Samsam22187212'
-                self.onLogin(self.userName)
+                self.onLogin(self.userName, self.email)
         except:
             self.userName = "None"
 
