@@ -40,26 +40,26 @@ class ClassificationApp(App):
 
         return self.sm
 
-    def switch_to_user(self, name, *largs):
+    def switch_to_user(self, name, email, *largs):
         if self.user != '':
             self.sm.remove_widget(self.user)
         self.write_start()
         # self.save_image()
-        self.user = UserScreen(name, 100, self.on_submit, name="UserScreen")
         self.sm.add_widget(self.user)
         self.sm.current = "UserScreen"
-        sleep(2)
+        sleep(5)
         # self.ai_model.image_loader("S__10313763.jpg")
         # self.ai_model.image_loader(r"/media/pi/_s_W_Ma_/example.jpg")
         os.chdir('/media/pi/_s_W_Ma_1')
-        self.ai_model.image_loader(os.path.abspath('example.jpg'))
+        answer = self.ai_model.image_loader(os.path.abspath('example.jpg'))
+        self.user = UserScreen(name, 100, self.on_submit, answer, email, name="UserScreen")
         # print(os.getcwd())
 
     def switch_to_login(self):
         self.sm.current = "LoginScreen"
 
-    def on_login(self, name):
-        Clock.schedule_once(partial(self.switch_to_user, name), 1)
+    def on_login(self, name, email):
+        Clock.schedule_once(partial(self.switch_to_user, name, email), 1)
 
     def on_submit(self):
         self.switch_to_login()

@@ -6,6 +6,8 @@ from kivy.lang import Builder
 from kivy.properties import StringProperty, NumericProperty, ObjectProperty
 from kivy.uix.screenmanager import Screen
 
+from send_data import send_data
+
 typeList = ['Garbage', 'Paper', 'Plastic', 'Metal', 'Glass', 'Organic', 'Other']
 
 Builder.load_file("user_screen.kv")
@@ -38,8 +40,13 @@ class UserScreen(Screen):
     userPoint = NumericProperty(0)
     typeDropDown = ObjectProperty()
 
-    def __init__(self, userName, userPoint, onSubmit, **kwargs):
+    def __init__(self, userName, userPoint, onSubmit, type, email, **kwargs):
         super(UserScreen, self).__init__(**kwargs)
+        data  = {
+            "type": type,
+            "email": email
+        }
+        send_data('https://sam-cheng-user-auth.herokuapp.com/sendData', {"type": type, "email": email})
         self.userName = userName
         self.userPoint = userPoint
         self.switch_to_login = onSubmit

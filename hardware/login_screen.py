@@ -39,14 +39,18 @@ class RFIDInput(BoxLayout):
 class LoginScreen(Screen):
     userName = StringProperty('None')
     state = StringProperty('Login')
-    email = 'sam22187212@gmail.com'
-    password = 'Samsam22187212'
+    email = ''
+    password = ''
     rfid = ''
     rfidInput = ObjectProperty()
     def __init__(self, onLogin, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
         self.onLogin = onLogin
         self.userName = "Sam Cheng"
+        self.email = 'sam22187212@gmail.com'
+        self.ids.emailInput.text = 'sam22187212@gmail.com'
+        self.password = 'Samsam22187212'
+        self.ids.passwordInput.text = 'Samsam22187212'
 
     def on_login(self):
         data = {
@@ -57,10 +61,10 @@ class LoginScreen(Screen):
             user = send_data(login_url, data).json()
             self.userName = user['name']
             if self.userName!="None":
-                self.email = ''
-                self.ids.emailInput.text = ''
-                self.password = ''
-                self.ids.passwordInput.text = ''
+                self.email = 'sam22187212@gmail.com'
+                self.ids.emailInput.text = 'sam22187212@gmail.com'
+                self.password = 'Samsam22187212'
+                self.ids.passwordInput.text = 'Samsam22187212'
                 self.onLogin(self.userName)
         except:
             self.userName = "None"
@@ -73,10 +77,10 @@ class LoginScreen(Screen):
         user = send_data(login_url, data).json()
         self.userName = user['name']
         if self.userName!="None":
-            self.email = ''
-            self.ids.emailInput.text = ''
-            self.password = ''
-            self.ids.passwordInput.text = ''
+            self.email = 'sam22187212@gmail.com'
+            self.ids.emailInput.text = 'sam22187212@gmail.com'
+            self.password = 'Samsam22187212'
+            self.ids.passwordInput.text = 'Samsam22187212'
             self.onLogin(self.userName)
 
     # def on_start(self):
