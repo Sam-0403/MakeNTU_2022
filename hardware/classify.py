@@ -99,14 +99,18 @@ class Decide():
         a = int(predTest[0])
         if(a == 0):
             print("glass")
+            return "glass"
         if(a == 1):
             print("metal")
+            return "metal"
         if(a == 2):
             print("paper")
+            return "paper"
         if(a == 3):
             print("plastic")
+            return "plastic"
 
-        return a
+        return 0
     
 
 # dd = Decide("/0319_best.pth")
